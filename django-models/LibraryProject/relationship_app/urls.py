@@ -2,8 +2,8 @@ from django.urls import path
 from .views import LibraryDetailView
 from .views import list_books
 from .views import RegisterView
-from .views import LoginView
-from .views import LogoutView
+# from .views import LoginView
+# from .views import LogoutView
 from .views_dir.admin_view import admin
 from .views_dir.librarian_view import librarian
 from .views_dir.member_view import member
