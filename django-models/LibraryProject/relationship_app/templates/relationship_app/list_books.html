@@ -3,14 +3,93 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #ffffff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+        a {
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .edit {
+            background-color: #007bff;
+            color: white;
+        }
+        .delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        .add-book {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .add-book:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-    <h1>Books Available:</h1>
-    <ul>
-        {% for book in books %}
-        <li>{{ book.title }} by {{ book.author.name }}</li>
-        {% endfor %}
-    </ul>
+
+    <div class="container">
+        <h1>Books Available</h1>
+        
+        <a href="{% url 'add_book' %}" class="add-book">➕ Add a New Book</a>
+
+        <ul>
+            {% for book in books %}
+            <li>
+                <span>{{ book.title }} by {{ book.author.name }}</span>
+                <div class="actions">
+                    <a href="{% url 'change_book' book.id %}" class="edit">✏️ Edit</a>
+                    <a href="{% url 'delete_book' book.id %}" class="delete">🗑 Delete</a>
+                </div>
+            </li>
+            {% empty %}
+            <p>No books available.</p>
+            {% endfor %}
+        </ul>
+    </div>
+
 </body>
 </html>
