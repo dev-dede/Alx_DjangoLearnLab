@@ -8,7 +8,9 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import user_passes_test, permission_required, login_required
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import permission_required 
+from django.contrib.auth.decorators import login_required
 
 def list_books(request):
     books = Book.objects.all()
