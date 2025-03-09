@@ -40,6 +40,9 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
+# Recognise request from reverse proxy as secure
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 # Redirect all HTTP traffic to HTTPS (only enable in production)
 SECURE_SSL_REDIRECT = True
 
