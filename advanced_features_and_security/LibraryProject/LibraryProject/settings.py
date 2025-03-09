@@ -43,6 +43,15 @@ SESSION_COOKIE_SECURE = True
 # Redirect all HTTP traffic to HTTPS (only enable in production)
 SECURE_SSL_REDIRECT = True
 
+# Instruct browsers to always use HTTPS for 1 year (recommended)
+SECURE_HSTS_SECONDS = 31536000  # 1 year in seconds
+
+# Apply this setting to all subdomains
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  
+
+# Allow your site to be preloaded in HSTS lists used by browsers
+SECURE_HSTS_PRELOAD = True  
+
 ALLOWED_HOSTS = []
 
 
