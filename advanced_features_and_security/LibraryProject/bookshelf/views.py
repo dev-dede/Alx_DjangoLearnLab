@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from django.db import models
+from .forms import ExampleForm
 
 
 from django.shortcuts import render, get_object_or_404
