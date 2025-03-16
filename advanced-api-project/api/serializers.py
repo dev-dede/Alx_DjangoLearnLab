@@ -6,6 +6,7 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = "__all__"
+        depth = 1
     
     def validate_publication_year(self, value):
         """
