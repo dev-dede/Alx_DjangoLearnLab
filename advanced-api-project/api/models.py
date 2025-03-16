@@ -14,7 +14,7 @@ class Author(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=50)
     publication_year = models.IntegerField()
-    author = models.OneToOneField(Author, on_delete=models.SET_NULL, null=True, related_name="book")
+    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, blank=True, related_name="book")
 
     def __str__(self):
         return self.title
