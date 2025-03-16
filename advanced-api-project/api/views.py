@@ -2,10 +2,10 @@ from rest_framework import generics
 from .serializers import BookSerializer
 from .models import Book
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
-from django_filters  import rest_framework as filters
+from django_filters  import rest_framework
 
-class BookFilter(filters.FilterSet):
-    title = filters.CharFilter(lookup_expr='icontains')
+class BookFilter(rest_framework.FilterSet):
+    title = rest_framework.CharFilter(lookup_expr='icontains')
 
     class Meta:
         model = Book
