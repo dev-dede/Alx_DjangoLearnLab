@@ -18,8 +18,9 @@ class BookListView(generics.ListAPIView):
     #filterset_fields = ['title', 'publication_year', 'author']
     filterset_class = BookFilter
     # Add DjangoFilterBackend even though it is set globally so as not to overide it
-    filter_backends = [filters.OrderingFilter, rest_framework.DjangoFilterBackend]
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter, rest_framework.DjangoFilterBackend,]
     ordering_fields = ['title', 'publication_year']
+    search_fields = ['title', 'publication_year']
 
 class BookDetailView(generics.RetrieveAPIView):
     queryset = Book.objects.all()
