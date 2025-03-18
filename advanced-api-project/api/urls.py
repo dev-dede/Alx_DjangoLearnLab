@@ -5,6 +5,7 @@ from .views import (
     BookCreateView,
     BookUpdateView,
     BookDeleteView,
+    AuthorListView,
 )
 from rest_framework.authtoken import views
 
@@ -14,5 +15,6 @@ urlpatterns = [
     path('books/create/', BookCreateView.as_view(), name="Book-create"),
     path('books/update/<int:pk>/', BookUpdateView.as_view(), name="Book-update"),
     path('books/delete/<int:pk>/', BookDeleteView.as_view(), name="Book-delete"),
+    path('authors/', AuthorListView.as_view(), name="Author-list"),
     path('token-auth/', views.obtain_auth_token)
 ]

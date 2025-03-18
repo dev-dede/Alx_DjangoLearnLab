@@ -1,6 +1,6 @@
 from rest_framework import generics, filters
-from .serializers import BookSerializer
-from .models import Book
+from .serializers import BookSerializer, AuthorSerializer
+from .models import Book, Author
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from django_filters import rest_framework
 
@@ -43,3 +43,6 @@ class BookDeleteView(generics.DestroyAPIView):
     serializer_class = BookSerializer
     permission_classes = [IsAuthenticated]
 
+class AuthorListView(generics.ListAPIView):
+    queryset= Author.objects.all()
+    serializer_class= AuthorSerializer
