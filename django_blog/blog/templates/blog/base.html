@@ -12,17 +12,28 @@
     <header>
         <nav>
             <ul>
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li>
+                        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-btn">Logout</button>
+                        </form>
+                    </li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
 
-    <div class="content">
+    <main class="content">
         {% block content %}
         <!-- Page-specific content goes here -->
         {% endblock %}
-    </div>
+    </main>
 
     <footer>
         <p>&copy; 2024 Django Blog</p>
