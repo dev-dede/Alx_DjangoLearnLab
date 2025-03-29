@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import BaseUserManager, AbstractUser
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, first_name, last_name, email, password):
@@ -34,7 +34,7 @@ class CustomUser(AbstractUser):
 
     # Additional fields
     bio = models.TextField(blank=True, null=True)
-    profile_pic = models.ImageField(upload_to="profile_pics/", blank=True, null=True)
+    profile_picture = models.ImageField(upload_to="profile_pics/", blank=True, null=True)
     followers = models.ManyToManyField("self", symmetrical=False, related_name="Following", blank=True)
 
     USERNAME_FIELD = "email"

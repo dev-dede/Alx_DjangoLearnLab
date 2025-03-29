@@ -7,7 +7,7 @@ class CustomUserAdmin(admin.ModelAdmin):
         "first_name",
         "last_name",
         "bio",
-        "profile_pic",
+        "profile_picture",
     )
 
     filter_horizontal = ("followers",)
